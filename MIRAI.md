@@ -10,7 +10,7 @@ MiraiArclight is the Mirai Pixelmon downstream fork of Arclight.
 - Pixelmon runtime target: 9.4.0
 - Upstream: `IzzelAliz/Arclight:FeudalKings`
 - Fork base: `166b9877e40eeec405097f416fc0ff2d23986313`
-- Upstream NeoForge pin at fork base: `21.1.248`
+- Mirai NeoForge pin: `21.1.230` (runtime-verified staging baseline)
 
 Forge/Fabric modules stay untouched to keep upstream syncing low-conflict. Mirai validation and release support target NeoForge only.
 
@@ -22,7 +22,7 @@ Forge/Fabric modules stay untouched to keep upstream syncing low-conflict. Mirai
 - Arclight core commit `0769551`
 - Server reached `Done`
 
-Pixelmon 9.4.0 declares NeoForge `[21.1.0,)`; 21.1.248 is metadata-compatible but remains runtime-unverified until CoreLab passes.
+Pixelmon 9.4.0 declares NeoForge `[21.1.0,)`. Upstream 21.1.248 caused a CoreLab JPMS split-package regression with the Mirai mod set, so Mirai intentionally pins the known-good 21.1.230 until a newer version passes the same runtime gate.
 
 ## Branch policy
 
