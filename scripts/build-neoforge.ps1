@@ -2,8 +2,8 @@ $ErrorActionPreference = "Stop"
 $Root = Resolve-Path (Join-Path $PSScriptRoot "..")
 Set-Location $Root
 
-$javaLine = (& java -version 2>&1 | Select-Object -First 1)
-if ($javaLine -notmatch '"21(?:\.|\")') {
+$javaLine = (& cmd /c "java -version 2>&1" | Select-Object -First 1)
+if ($javaLine -notmatch 'version "21\.') {
     throw "Java 21 is required. Detected: $javaLine"
 }
 
