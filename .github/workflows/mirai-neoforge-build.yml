@@ -27,6 +27,9 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew :bootstrap:neoforgeJar --no-daemon --stacktrace
+      - name: Verify Mirai artifact invariants
+        shell: pwsh
+        run: ./scripts/verify-mirai-artifact.ps1
       - name: Upload NeoForge artifact
         uses: actions/upload-artifact@v4
         with:

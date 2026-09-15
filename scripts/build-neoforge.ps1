@@ -23,6 +23,9 @@ $outName = "MiraiArclight-NeoForge-1.21.1-$shortSha.jar"
 $outPath = Join-Path $dist $outName
 Copy-Item $artifact.FullName $outPath -Force
 
+& (Join-Path $PSScriptRoot "verify-mirai-artifact.ps1") -Artifact $outPath
+if ($LASTEXITCODE -ne 0) { throw "Mirai artifact verification failed." }
+
 $hash = (Get-FileHash $outPath -Algorithm SHA256).Hash
 Set-Content -Path "$outPath.sha256" -Value "$hash  $outName" -Encoding ascii
 
