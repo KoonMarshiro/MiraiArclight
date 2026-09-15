@@ -37,7 +37,9 @@ configurations {
     implementation.extendsFrom(embed, gson)
 }
 
-def installerLibs = [/*"org.spongepowered:mixin:$mixinVersion", */ 'org.yaml:snakeyaml:2.2',
+// Mirai: PokeBossRaid already supplies org.yaml.snakeyaml.*. Loading a second
+// SnakeYAML module through Arclight's bootstrap creates a JPMS split-package.
+def installerLibs = [/*"org.spongepowered:mixin:$mixinVersion", */
                      'org.xerial:sqlite-jdbc:3.42.0.1', 'com.mysql:mysql-connector-j:8.1.0',
                      /*'commons-lang:commons-lang:2.6',*/ 'com.googlecode.json-simple:json-simple:1.1.1',
                      'org.apache.logging.log4j:log4j-jul:2.19.0', 'net.md-5:SpecialSource:1.11.3',

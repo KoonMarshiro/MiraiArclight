@@ -14,15 +14,13 @@ MiraiArclight is the Mirai Pixelmon downstream fork of Arclight.
 
 Forge/Fabric modules stay untouched to keep upstream syncing low-conflict. Mirai validation and release support target NeoForge only.
 
-## Verified pre-fork runtime reference
+## Runtime evidence and compatibility baseline
 
-- Minecraft 1.21.1
-- Pixelmon 9.4.0
-- NeoForge 21.1.230
-- Arclight core commit `0769551`
-- Server reached `Done`
+The Mirai mod set is verified to reach `Done` on plain NeoForge 21.1.230 with Minecraft 1.21.1 and Pixelmon 9.4.0.
 
-Pixelmon 9.4.0 declares NeoForge `[21.1.0,)`. Upstream 21.1.248 caused a CoreLab JPMS split-package regression with the Mirai mod set, so Mirai intentionally pins the known-good 21.1.230 until a newer version passes the same runtime gate.
+The older Arclight core commit `0769551` was **not** a successful Arclight baseline for this exact mod set: it bundled NeoForge 21.1.228, while LegacyForms requires NeoForge `[21.1.229,)`.
+
+When Arclight is moved to a compatible NeoForge version, its bootstrap normally adds a standalone SnakeYAML module while PokeBossRaid already embeds `org.yaml.snakeyaml.*`. JPMS rejects the resulting split package before game launch. MiraiArclight therefore removes the redundant bootstrap SnakeYAML dependency and currently pins NeoForge 21.1.230, the proven Mirai loader baseline.
 
 ## Branch policy
 
